@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prajwal Shashidhar</title>
+<meta name="description" content="Prajwal Shashidhar – Process & Quality Engineer across aerospace, automotive and MedTech. M.Sc. Global Production Engineering, TU Berlin.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#ffffff; --text:#1d1d1f; --muted:#444; --card:#ffffff; --border:#e6e6ea;
+    --accent:#4a5bd4; --tag-bg:#eef0fb; --tag-text:#5464d6; --shadow:0 2px 10px rgba(0,0,0,.06);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:'Poppins',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+  a{color:var(--accent);text-decoration:none}
+
+  /* NAV */
+  nav{position:sticky;top:0;z-index:10;background:rgba(255,255,255,.95);backdrop-filter:blur(6px);
+      display:flex;justify-content:space-between;align-items:center;padding:16px 40px;border-bottom:1px solid transparent}
+  nav .brand{font-size:1.45rem;font-weight:600;color:var(--text)}
+  nav ul{display:flex;gap:30px;list-style:none;align-items:center}
+  nav ul a{color:var(--text);font-size:1.05rem}
+  nav ul a:hover{color:var(--accent)}
+  nav .btn-resume{border:1.5px solid var(--accent);border-radius:8px;padding:4px 16px}
+  .menu-toggle{display:none;background:none;border:0;font-size:1.6rem;cursor:pointer}
+
+  /* HERO */
+  .hero{text-align:center;padding:50px 20px 90px;max-width:900px;margin:0 auto}
+  .avatar{width:230px;height:230px;border-radius:50%;margin:0 auto 26px;overflow:hidden;
+          background:linear-gradient(135deg,#d9dcf5,#b9bfe9);display:flex;align-items:center;justify-content:center}
+  .avatar img{width:100%;height:100%;object-fit:cover}
+  .avatar span{font-size:4.5rem;font-weight:600;color:#fff}
+  .hero h1{font-size:2.3rem;font-weight:600;display:inline-flex;align-items:center;gap:12px}
+  .hero h1 a svg{width:22px;height:22px;fill:var(--text)}
+  .hero h2{font-size:1.1rem;font-weight:400;margin:4px 0 18px}
+  .hero p{font-size:.95rem;color:var(--muted);max-width:820px;margin:0 auto}
+  .hero-btns{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:26px}
+  .hero-btns a{border:1.5px solid var(--accent);border-radius:6px;padding:5px 14px;font-size:.92rem}
+  .hero-btns a:hover{background:var(--accent);color:#fff}
+  .more{margin-top:34px;font-size:.95rem;color:var(--muted)}
+  .more::after{content:"⌄";display:block;font-size:1.5rem;line-height:1}
+
+  /* SECTIONS */
+  section{padding:60px 20px;max-width:1080px;margin:0 auto}
+  section > h2{font-size:2.2rem;font-weight:700;margin:0 10px 22px}
+  .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:26px}
+  .card{background:var(--card);border:1px solid var(--border);border-radius:10px;box-shadow:var(--shadow);padding:15px;display:flex;flex-direction:column}
+  .banner{height:150px;border-radius:4px;margin-bottom:14px;display:flex;align-items:center;justify-content:center;
+          color:#fff;font-weight:600;letter-spacing:.06em;font-size:1rem;text-transform:uppercase;text-align:center;padding:0 16px}
+  .b1{background:linear-gradient(135deg,#1f2a5a,#4a5bd4)}
+  .b2{background:linear-gradient(135deg,#0f3b3a,#2a9d8f)}
+  .b3{background:linear-gradient(135deg,#3a1f5a,#8a4fd4)}
+  .b4{background:linear-gradient(135deg,#5a2a1f,#d4774a)}
+  .b5{background:linear-gradient(135deg,#1f3f5a,#4aa3d4)}
+  .b6{background:linear-gradient(135deg,#2d2d2d,#6b6b6b)}
+  .card h3{font-size:1.35rem;font-weight:400;line-height:1.35;margin-bottom:10px}
+  .tags{display:flex;flex-wrap:wrap;gap:6px 8px;margin-bottom:10px}
+  .tags span{background:var(--tag-bg);color:var(--tag-text);font-size:.8rem;padding:1px 7px;border-radius:5px}
+  .card p{font-size:.88rem}
+  .card .detail{display:none;margin-top:8px}
+  .card .detail ul{padding-left:18px;font-size:.86rem}
+  .card .detail li{margin-bottom:4px}
+  .card.open .detail{display:block}
+  .card .toggle{margin-top:auto;padding-top:10px;font-size:.88rem;cursor:pointer;background:none;border:0;color:var(--accent);text-align:left;font-family:inherit}
+
+  /* SKILLS */
+  .skills{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:22px}
+  .skills .card h3{font-size:1.1rem;font-weight:500}
+
+  /* EDUCATION / CERTS */
+  .list .item{border-left:3px solid var(--accent);padding:4px 0 4px 16px;margin-bottom:18px}
+  .list .item h4{font-weight:500;font-size:1rem}
+  .list .item small{color:var(--muted);display:block}
+
+  /* CONTACT */
+  form{max-width:620px;margin:0 10px;display:flex;flex-direction:column;gap:12px}
+  label{font-size:.9rem;font-weight:500}
+  input,textarea{font-family:inherit;font-size:.95rem;padding:10px;border:1px solid #ccc;border-radius:6px}
+  textarea{min-height:130px;resize:vertical}
+  form button{align-self:flex-start;background:var(--accent);color:#fff;border:0;border-radius:6px;padding:9px 22px;font-family:inherit;cursor:pointer}
+  .contact-links{margin:0 10px 22px;display:flex;flex-wrap:wrap;gap:18px;font-size:.95rem}
+
+  footer{text-align:center;padding:40px 20px;font-size:.82rem;color:var(--muted);border-top:1px solid var(--border);margin-top:40px}
+  footer nav{position:static;justify-content:center;padding:0 0 10px;background:none}
+  footer nav ul{gap:20px}
+
+  .fab{position:fixed;right:22px;bottom:22px;width:46px;height:46px;border-radius:50%;background:#fff;border:1.5px solid #e88;
+       display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow);font-size:.7rem;font-weight:700;color:#d33}
+
+  @media (max-width:760px){
+    nav{padding:14px 16px}
+    .menu-toggle{display:block}
+    nav ul{display:none;position:absolute;top:60px;right:16px;flex-direction:column;background:#fff;padding:16px 22px;border:1px solid var(--border);border-radius:8px;gap:14px}
+    nav ul.show{display:flex}
+    .grid{grid-template-columns:1fr}
+    .avatar{width:180px;height:180px}
+    .hero h1{font-size:1.9rem}
+    section > h2{font-size:1.8rem}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="brand" href="#home">Prajwal Shashidhar</a>
+  <button class="menu-toggle" aria-label="Menu" onclick="document.getElementById('menu').classList.toggle('show')">☰</button>
+  <ul id="menu">
+    <li><a href="#home">Home</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#experience">Experiences</a></li>
+    <li><a class="btn-resume" href="resume.pdf" target="_blank">Resume</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<header class="hero" id="home">
+  <div class="avatar">
+    <!-- Upload your photo as profile.jpg in the repo root -->
+    <img src="profile.jpg" alt="Prajwal Shashidhar" onerror="this.parentNode.innerHTML='<span>PS</span>'">
+  </div>
+  <h1>I'm Prajwal
+    <a href="https://www.linkedin.com/in/prajwal-shashidhar-11537597/" target="_blank" aria-label="LinkedIn">
+      <svg viewBox="0 0 24 24"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>
+    </a>
+  </h1>
+  <h2>Process &amp; Quality Engineer</h2>
+  <p>Process &amp; Quality Engineer with 5+ years across aerospace, automotive and MedTech quality, currently a Working Student in Quality Management at Novanta Inc. Specialized in supplier quality, 8D/CAPA, SCAR workflows, SPC-backed root cause analysis (Cpk, Gauge R&amp;R) and APQP-aligned NPI quality planning. M.Sc. Global Production Engineering from TU Berlin; ISO 9001:2015 &amp; ISO 14001:2015 Internal Auditor and Lean Six Sigma Green Belt.</p>
+  <div class="hero-btns">
+    <a href="#projects">▣ Projects</a>
+    <a href="#experience">▤ Experiences</a>
+    <a href="#skills">✎ Skills</a>
+    <a href="#contact">✉ Contact Me</a>
+  </div>
+  <div class="more">More About Me</div>
+</header>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <h2>Projects</h2>
+  <div class="grid">
+
+    <div class="card">
+      <div class="banner b1">Digital Product Passport</div>
+      <h3>Master's Thesis – Digital Product Passport Framework with PLM/ERP Integration</h3>
+      <div class="tags"><span>Digital Product Passport (DPP)</span><span>PLM</span><span>ERP</span><span>Sustainability</span><span>Data Traceability</span><span>Systems Integration</span><span>Scientific writing</span></div>
+      <p>Master's thesis at TU Berlin developing a Digital Product Passport framework and exploring its integration with PLM and ERP systems to enable product-lifecycle traceability and sustainability data exchange.</p>
+      <div class="detail"><ul>
+        <li>Framework design for capturing and sharing product lifecycle data through a DPP</li>
+        <li>Mapping of DPP data requirements onto PLM and ERP system landscapes</li>
+        <li>Part of the M.Sc. Global Production Engineering programme (Sustainability, Production Technology, Quality Management)</li>
+      </ul></div>
+      <button class="toggle">Read more →</button>
+    </div>
+
+    <div class="card">
+      <div class="banner b2">Aerospace Quality · AS9100</div>
+      <h3>QMS Framework &amp; Quality Gates – Moog Controls FM306 Aerospace Program</h3>
+      <div class="tags"><span>AS9100</span><span>QMS Development</span><span>Control Plans</span><span>APQP</span><span>Quality Gates</span><span>8D / 5-Why</span><span>Lean (5S, Kaizen)</span></div>
+      <p>Owned end-to-end quality engineering for high-precision aerospace components: developed the QMS framework, implemented control plans and quality gates, reducing defect rates by 20% and improving on-time delivery by 15%.</p>
+      <div class="detail"><ul>
+        <li>Developed the QMS framework and implemented control plans — 20% defect-rate reduction</li>
+        <li>Defined and enforced quality gates across production with non-conformance escalation — 15% on-time delivery improvement</li>
+        <li>Lean tools (5S, Kaizen, error-proofing) across testing and assembly — 25% cost reduction, 20% workflow efficiency gain</li>
+      </ul></div>
+      <button class="toggle">Read more →</button>
+    </div>
+
+    <div class="card">
+      <div class="banner b3">Supplier Quality · SCAR</div>
+      <h3>Supplier Quality Recovery – 120+ SCARs via 8D &amp; FMEA</h3>
+      <div class="tags"><span>Supplier Quality</span><span>SCAR</span><span>8D</span><span>FMEA</span><span>5-Why</span><span>Supplier KPIs</span><span>Containment</span></div>
+      <p>Led resolution of 120+ supplier quality issues through end-to-end SCAR initiation, tracking and closure with cross-functional teams, achieving a 30% reduction in recurring defects within 6 months.</p>
+      <div class="detail"><ul>
+        <li>Applied 8D, FMEA and 5-Why root cause methodologies to supplier non-conformances</li>
+        <li>Maintained supplier quality KPIs, supported chargeback workflows, and drove data-driven supplier performance decisions</li>
+        <li>Coordinated on-site supplier liaisons to prioritise inspections and enforce quality containment</li>
+      </ul></div>
+      <button class="toggle">Read more →</button>
+    </div>
+
+    <div class="card">
+      <div class="banner b4">Industrialization · FAI</div>
+      <h3>Supplier Industrialization, MSA &amp; Process Capability Studies</h3>
+      <div class="tags"><span>First Article Inspection</span><span>CMM / Metrology</span><span>MSA / Gauge R&amp;R</span><span>SPC (Cp, Cpk)</span><span>GD&amp;T</span><span>Lean Manufacturing</span></div>
+      <p>Executed industrialization projects for new component suppliers — line trials, CMM-based first-article validation and defect analysis — achieving 100% on-time part qualification and a 15% First Pass Yield improvement.</p>
+      <div class="detail"><ul>
+        <li>Performed MSA / Gauge R&amp;R using CMM, micrometers and calipers</li>
+        <li>Developed control plans and process capability studies (Cp, Cpk) to ensure SPC compliance</li>
+        <li>GD&amp;T and PLC-based process corrections across multiple production lines — 15% FPY improvement</li>
+      </ul></div>
+      <button class="toggle">Read more →</button>
+    </div>
+
+    <div class="card">
+      <div class="banner b5">MedTech QMS · ISO 13485</div>
+      <h3>Digital QMS / PLM / LMS Validation in a Regulated MedTech Environment</h3>
+      <div class="tags"><span>ISO 13485</span><span>Design Control</span><span>System Validation</span><span>SOP Development</span><span>Change Management</span><span>Audit Readiness</span></div>
+      <p>At Novanta Inc., validating QMS, PLM and LMS platforms by designing training content and test cases, and updating design control processes through graphical flow diagrams.</p>
+      <div class="detail"><ul>
+        <li>Built and revised SOPs, quality templates and digital signature workflows for ISO 13485-aligned QMS operations</li>
+        <li>Configured test cases and verified end-to-end workflow compliance</li>
+        <li>Supported audit readiness through structured documentation control and process optimization reviews</li>
+      </ul></div>
+      <button class="toggle">Read more →</button>
+    </div>
+
+    <div class="card">
+      <div class="banner b6">Operator Training · Lean</div>
+      <h3>Quality &amp; Lean Manufacturing Training Programme</h3>
+      <div class="tags"><span>Training Design</span><span>Lean Manufacturing</span><span>Error-proofing</span><span>Inspection</span><span>Compliance</span></div>
+      <p>Delivered quality and lean manufacturing training programmes for production teams, reducing operator errors by 20% and strengthening compliance across system verification and inspection activities.</p>
+      <div class="detail"><ul>
+        <li>Training on lean quality tools and inspection practices for aerospace component production</li>
+        <li>Built team compliance across system verification and inspection activities</li>
+      </ul></div>
+      <button class="toggle">Read more →</button>
+    </div>
+
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <h2>Experiences</h2>
+  <div class="grid">
+
+    <div class="card">
+      <h3>Working Student Quality Management – Novanta Inc., Berlin (Jan 2025 – Present)</h3>
+      <div class="tags"><span>ISO 13485</span><span>QMS</span><span>SOP Development</span><span>Design Control</span><span>PLM / LMS Validation</span><span>Test Case Design</span><span>Corrective Actions</span><span>Change Management</span><span>Audit Readiness</span></div>
+      <p>Supporting ISO 13485-aligned QMS operations in a regulated medical-device environment: SOPs, design control processes, digital system validation and continuous improvement.</p>
+      <div class="detail"><ul>
+        <li>Build and revise SOPs, quality templates, and digital signature workflows</li>
+        <li>Update design control processes through graphical flow diagrams; validate QMS, PLM and LMS platforms</li>
+        <li>Drive continuous QMS improvement with cross-functional engineering and quality teams</li>
+        <li>Contribute to audit readiness and support change management processes</li>
+      </ul></div>
+      <button class="toggle">Read more →</button>
+    </div>
+
+    <div class="card">
+      <h3>Quality Engineer – Excellence Technologies, Bengaluru (Dec 2021 – Sep 2023)</h3>
+      <div class="tags"><span>AS9100</span><span>APQP</span><span>PPAP</span><span>NPI Quality Planning</span><span>Control Plans</span><span>8D / 5-Why</span><span>Non-conformance Management</span><span>5S / Kaizen</span><span>Training</span></div>
+      <p>End-to-end quality engineering for high-precision aerospace components (Moog Controls FM306 program) in an AS9100 supply-chain environment.</p>
+      <div class="detail"><ul>
+        <li>Developed QMS framework and control plans — 20% defect-rate reduction</li>
+        <li>APQP-aligned NPI quality planning; 8D and 5-Why analysis cut customer complaints by 10%</li>
+        <li>Quality gates and NC escalation — 15% on-time delivery improvement</li>
+        <li>Lean quality tools — 25% cost reduction and 20% workflow efficiency improvement</li>
+        <li>Quality training programmes — 20% fewer operator errors</li>
+      </ul></div>
+      <button class="toggle">Read more →</button>
+    </div>
+
+    <div class="card">
+      <h3>Process Engineer – Excellence Technologies, Bengaluru (Dec 2020 – Nov 2021)</h3>
+      <div class="tags"><span>Supplier Quality</span><span>SCAR</span><span>8D / FMEA</span><span>MSA / Gauge R&amp;R</span><span>SPC (Cp, Cpk)</span><span>CMM</span><span>GD&amp;T</span><span>ISO 9001</span><span>Design for Manufacturing</span></div>
+      <p>Supplier quality and industrialization: 120+ SCARs closed, 100% on-time part qualification and 15% First Pass Yield improvement.</p>
+      <div class="detail"><ul>
+        <li>120+ supplier quality issues resolved — 30% reduction in recurring defects in 6 months</li>
+        <li>Line trials, CMM-based first-article validation, GD&amp;T, SPC and Lean principles</li>
+        <li>MSA / Gauge R&amp;R, control plans and process capability studies</li>
+        <li>NC trend tracking with SPC tools and Excel dashboards; supplier KPI ownership</li>
+        <li>ISO 9001 documentation control and closure of audit findings</li>
+      </ul></div>
+      <button class="toggle">Read more →</button>
+    </div>
+
+    <div class="card">
+      <h3>Internship Trainee – Hindustan Aeronautics Limited (HAL), Bengaluru (Jul 2019 – Aug 2019)</h3>
+      <div class="tags"><span>Aerospace MRO</span><span>Component Inspection</span><span>Quality Documentation</span><span>Overhaul Processes</span></div>
+      <p>Rotated through the Overhaul Division, gaining exposure to aerospace MRO quality processes, component inspection workflows and AS9100-adjacent documentation practices.</p>
+      <button class="toggle" style="visibility:hidden">Read more →</button>
+    </div>
+
+  </div>
+</section>
+
+<!-- EDUCATION & CERTIFICATIONS -->
+<section id="education">
+  <h2>Education &amp; Certifications</h2>
+  <div class="grid">
+    <div class="card list">
+      <h3>Education</h3>
+      <div class="item"><h4>M.Sc. Global Production Engineering</h4><small>Technische Universität Berlin · 2023 – 2025</small><small>Manufacturing &amp; Factory Planning, Supply Chain Management, Quality Management, Sustainability, Production Technology</small></div>
+      <div class="item"><h4>B.E. Aeronautical Engineering</h4><small>Nitte Meenakshi Institute of Technology · 2016 – 2020 · Grade 8.48</small></div>
+    </div>
+    <div class="card list">
+      <h3>Certifications</h3>
+      <div class="item"><h4>Lean Six Sigma Green Belt</h4><small>TU Berlin · 2024</small></div>
+      <div class="item"><h4>ISO 9001:2015 Internal Auditor</h4><small>TU Berlin · 2024</small></div>
+      <div class="item"><h4>ISO 14001:2015 Internal Auditor</h4><small>TU Berlin · 2024</small></div>
+      <div class="item"><h4>SAP – Quality Management in Production (Inspection Points &amp; Samples)</h4><small>SAP · 2026</small></div>
+      <div class="item"><h4>SAP – Business Processes in S/4HANA Sourcing</h4><small>SAP · 2026</small></div>
+      <div class="item"><h4>Aero Structure Design &amp; Product Design (CATIA)</h4><small>Dassault Systèmes · 2018 – 2019</small></div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <h2>Skills</h2>
+  <div class="skills">
+    <div class="card"><h3>Quality Engineering</h3><div class="tags"><span>8D / CAPA</span><span>FMEA</span><span>5-Why / RCA</span><span>SCAR</span><span>Control Plans</span><span>Non-conformance Management</span><span>Corrective Actions</span></div></div>
+    <div class="card"><h3>Product &amp; Process Launch</h3><div class="tags"><span>APQP</span><span>PPAP</span><span>New Product Introduction</span><span>First Article Inspection</span><span>Design Control</span><span>Design for Manufacturing</span></div></div>
+    <div class="card"><h3>Statistics &amp; Measurement</h3><div class="tags"><span>SPC</span><span>Cp / Cpk</span><span>MSA / Gauge R&amp;R</span><span>CMM &amp; Metrology</span><span>GD&amp;T</span></div></div>
+    <div class="card"><h3>Standards &amp; Systems</h3><div class="tags"><span>ISO 9001</span><span>IATF 16949</span><span>AS9100</span><span>ISO 13485</span><span>ISO 14001</span><span>VDA Standards</span><span>QMS</span></div></div>
+    <div class="card"><h3>Continuous Improvement</h3><div class="tags"><span>Lean Six Sigma</span><span>Kaizen</span><span>5S</span><span>Error-proofing</span><span>Lean Management</span></div></div>
+    <div class="card"><h3>Tools &amp; Digital</h3><div class="tags"><span>SAP S/4HANA (QM, Sourcing)</span><span>PLM</span><span>LMS</span><span>CATIA</span><span>Excel Dashboards</span><span>Digital Product Passport</span></div></div>
+    <div class="card"><h3>Languages</h3><div class="tags"><span>English (C1)</span><span>German (B1 – daily business use)</span></div></div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <h2>Contact</h2>
+  <div class="contact-links">
+    <a href="mailto:prajwal.shashi@gmail.com">✉ prajwal.shashi@gmail.com</a>
+    <a href="https://www.linkedin.com/in/prajwal-shashidhar-11537597/" target="_blank">in LinkedIn</a>
+    <span>📍 Berlin, Germany</span>
+  </div>
+  <form id="contactForm">
+    <label for="name">Name</label><input id="name" required>
+    <label for="email">Email</label><input id="email" type="email" required>
+    <label for="msg">Message</label><textarea id="msg" required></textarea>
+    <button type="submit">Send Message</button>
+  </form>
+</section>
+
+<footer>
+  <nav><ul style="display:flex;position:static;border:0;padding:0;flex-direction:row">
+    <li><a href="#home">Home</a></li><li><a href="#projects">Projects</a></li><li><a href="resume.pdf" target="_blank">Resume</a></li>
+  </ul></nav>
+  <p>© 2026 Prajwal Shashidhar</p>
+  <p>Layout inspired by the Free-To-Engineer portfolio template by lowinertia.com (CC BY 4.0)</p>
+</footer>
+
+<a class="fab" href="resume.pdf" target="_blank" title="Download Resume">PDF</a>
+
+<script>
+  document.querySelectorAll('.card .toggle').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      const card=btn.closest('.card');
+      card.classList.toggle('open');
+      btn.textContent=card.classList.contains('open')?'Show less ←':'Read more →';
+    });
+  });
+  document.querySelectorAll('#menu a').forEach(a=>a.addEventListener('click',()=>document.getElementById('menu').classList.remove('show')));
+  document.getElementById('contactForm').addEventListener('submit',e=>{
+    e.preventDefault();
+    const n=document.getElementById('name').value, em=document.getElementById('email').value, m=document.getElementById('msg').value;
+    location.href='mailto:prajwal.shashi@gmail.com?subject='+encodeURIComponent('Portfolio contact from '+n)+'&body='+encodeURIComponent(m+'\n\n— '+n+' ('+em+')');
+  });
+</script>
+</body>
+</html>
